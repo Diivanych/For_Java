@@ -33,7 +33,7 @@ public class h_task_04
         if (a % 10 + w >= 10) a += 10;
         b = er - a;
 
-         if (a < 0 || b < 0 || er < 0)
+        if (a < 0 || b < 0 || er < 0)
         {
             System.out.printf("\nТакое условие не имеет решения.\n\n");
             System.exit (1);
