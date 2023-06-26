@@ -29,16 +29,15 @@ public class h_task_04
 
         int a, b = 0;
 
-        if (q < 0 || w < 0 || er < 0)
-        {
-            System.out.printf("\nПо условию все числа должны быть больше '0'\n\n");
-            System.exit (1);
-        }
-
         a = (q * 10) + (er % 10) - w;
         if (a % 10 + w >= 10) a += 10;
         b = er - a;
 
+         if (a < 0 || b < 0 || er < 0)
+        {
+            System.out.printf("\nТакое условие не имеет решения.\n\n");
+            System.exit (1);
+        }
         System.out.printf("\nРезультат: " + a + " + " + b + " = " + er + "\n\n");
     }
 }
