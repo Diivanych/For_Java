@@ -11,7 +11,7 @@ public class h_task_12
     
     {
         Logger logger1 = Logger.getAnonymousLogger();
-        FileWriter fileWriter = new FileWriter("log.txt");
+        FileWriter fileWriter = new FileWriter("calcLog.txt");
 
         
         

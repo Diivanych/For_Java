@@ -1,23 +1,31 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
 public class h_task_11 
 {
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException
     {
-        int[] nums = {5, 3, 2, 1, 4, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 9, 2, 3, 3};
-        int max = nums[0];
-        for (int i = 1; i < nums.length; i++) 
+        FileWriter fileWriter = new FileWriter("sortLog.txt");
+        int[] nums = {0, 9, 5, 3, 2, 1, 4, 3, 3, 0, 0, 9, 2, 3, 3};
+        String stringArr = Arrays.toString(nums);
+        fileWriter.write(stringArr + "\n");
+        int max;
+        int l = 1;
+        for (int i = 0; i < nums.length; i++) 
         {
-            for (int j = 1; j < nums.length; j++) 
+            for (int j = 0; j < nums.length - 1; j++) 
             {
-                if (max < nums[j]) 
+                if (nums[j] > nums[j + 1]) 
                 {
-                    nums[j - 1] = max;
-                    max = nums[j];                    
+                    max = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = max;
+                    stringArr = Arrays.toString(nums);
+                    fileWriter.append(stringArr + "\n");
                 }
             }
         }
-        for (int i = 0; i < nums.length; i++) 
-        {
-            System.out.print(nums[i] + " "); 
-        } 
+        fileWriter.close();
+        System.out.println(stringArr);
     } 
 }
