@@ -1,8 +1,6 @@
 import java.util.Random;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 public class h_task_31
 {
     public static void main(String[] args) throws IOException
