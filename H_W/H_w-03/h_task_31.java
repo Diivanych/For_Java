@@ -37,7 +37,7 @@ public class h_task_31
         System.out.print("\nНайдено максимальное число: " + max);
         System.out.print("\nНайдено минимальное  число: " + min);
 
-        float temp = 0;
+        int temp = 0;
 
         for (int i = 0; i < lst.size(); i ++) 
         {
@@ -48,7 +48,7 @@ public class h_task_31
 
         System.out.print("\nРазмер оставшегося списка: " + lst.size());
         
-        System.out.print("\n\nСреднее  значение  по  списку: " + temp / lst.size());
+        System.out.print("\n\nСреднее  значение  по  списку: " + (float) temp / lst.size());
         
         System.out.print("\nСреднее значение из min + max: " + (max + min) / 2 + "\n\n");
     }
