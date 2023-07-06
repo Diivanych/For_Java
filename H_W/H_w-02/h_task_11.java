@@ -5,6 +5,7 @@ public class h_task_11
 {
     public static void main(String[] args) throws IOException
     {
+        System.out.print("\033[H\033[2J");
         FileWriter fileWriter = new FileWriter("sortLog.txt");
         int[] nums = {0, 9, 5, 3, 2, 1, 4, 3, 3, 0, 0, 9, 2, 3, 3};
         String stringArr = Arrays.toString(nums);

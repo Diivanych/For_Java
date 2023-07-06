@@ -15,7 +15,7 @@ public class h_task_31
 
         System.out.println("\nСгенерирован следующий список: " + lst);
 
-        for (int i = (lst.size() - 1); i >=0; i--) 
+        for (int i = (lst.size() - 1); i >=0; i--)
         {
             if (lst.get(i) % 2 == 0) 
             {
