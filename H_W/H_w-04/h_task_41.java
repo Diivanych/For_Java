@@ -5,14 +5,44 @@ import java.util.Deque;
 public class h_task_41 
 {
     private static boolean isDigit(String s) throws NumberFormatException {
-        try {
+        try 
+        {
             Integer.parseInt(s);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
     }
-    public static void main(String[] args) 
+    
+    private static int stackFill(String arr[], Deque<Integer> stack, int sign) throws NumberFormatException
+    {
+        for (int i = 0; i < arr.length; i++) 
+        {
+            if (isDigit(arr[i])) 
+            {
+                stack.push(Integer.parseInt(arr[i]));
+            } 
+            else
+            {
+                sign *= -1;               
+            } 
+        }
+        return sign;
+    }
+    
+    private static double fillResult(Deque<Integer> stack, double sl) throws NumberFormatException
+    {
+        int size =  stack.size();
+    
+        for (int i = 0; i < size; i++) 
+        {
+            sl = sl + stack.pop() * Math.pow(10, i);
+            sl = (int)sl;
+        }
+        return sl;
+    }
+    
+    public static void main(String[] args) throws NumberFormatException
     {
         System.out.print("\033[H\033[2J");
 //--------------- Объявляем стеки -----====--------------------
@@ -33,29 +63,8 @@ public class h_task_41
         int sign1 = 1;
         int sign2 = 1;
 //--------------- Заполняем стеки ------------------
-        for (int i = 0; i < first.length; i++) 
-        {
-            if (isDigit(first[i])) 
-            {
-                firstSt.push(Integer.parseInt(first[i]));
-            } 
-            else
-            {
-                sign1 *= -1;               
-            } 
-        }
-
-        for (int i = 0; i < second.length; i++) {
-
-            if (isDigit(second[i])) 
-            {
-                secondSt.push(Integer.parseInt(second[i]));
-            } 
-            else
-            {
-                sign2 *= -1;               
-            } 
-        }
+        sign1 *= stackFill(first, firstSt, sign1);
+        sign2 *= stackFill(second, secondSt, sign2);
 // -------------- Печатаем стеки --------------------------
         System.out.println("\nСодержимое  первого  стека: " + firstSt);
         System.out.println("Знак первого стека: " + sign1);
@@ -63,24 +72,12 @@ public class h_task_41
         System.out.println("\nСодержимое  второго  стека: " + secondSt);
         System.out.println("Знак второго стека: " + sign2);
 
-        int size1 =  firstSt.size();
-        int size2 =  secondSt.size();
-
         double sl1 = 0;
         double sl2 = 0;
-    
-        for (int i = 0; i < size1; i++) 
-        {
-            sl1 = sl1 + firstSt.pop() * Math.pow(10, i);
-            sl1 = (int)sl1;
-        }
-
-        for (int i = 0; i < size2; i++) 
-        {
-            sl2 = sl2 + secondSt.pop() * Math.pow(10, i);
-            sl2 = (int)sl2;
-        }
-
+//--------------- Вычисляем слагаемые ---------------------------------        
+        sl1 = fillResult(firstSt, sl1);
+        sl2 = fillResult(secondSt, sl2);
+//--------------- Вычисляем и печатаем резудьтат (сумма и произведение) -
         int sum = (int)sl1 * sign1 + (int)sl2 * sign2;
         int mult = (int)sl1 * sign1 * (int)sl2 * sign2;
         
@@ -95,35 +92,14 @@ public class h_task_41
 
         int sumSign = 1;
         int multSign = 1;
-
-        for (int i = 0; i < sumArr.length; i++) 
-        {
-            if (isDigit(sumArr[i])) 
-            {
-                sumSt.push(Integer.parseInt(sumArr[i]));
-            } 
-            else
-            {
-                sumSign *= -1;               
-            } 
-        }
-
-        for (int i = 0; i < multArr.length; i++) {
-
-            if (isDigit(multArr[i])) 
-            {
-                multSt.push(Integer.parseInt(multArr[i]));
-            } 
-            else
-            {
-                multSign *= -1;               
-            } 
-        }        
-   
+//--------------- Заполняем результирующие стеки ------------------
+        sumSign *= stackFill(sumArr, sumSt, sumSign);
+        multSign *= stackFill(multArr, multSt, multSign);
+//--------------- Печатаем результирующие стеки ------------------
         System.out.println("\nСодержимое  стека суммы: " + sumSt);
         System.out.println("Знак суммы: " + sumSign);
         
         System.out.println("\nСодержимое стека произведения: " + multSt);
-        System.out.println("Знак произведения: " + multSign + "\n\n");
+        System.out.println("Знак произведения: " + multSign + "\n");
     }
 }
