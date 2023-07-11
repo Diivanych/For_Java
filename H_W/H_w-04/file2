@@ -4,15 +4,12 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 public class h_task_41 
 {
-    private static boolean isDigit(String s) throws NumberFormatException 
-    {
+    private static boolean isDigit(String s) throws NumberFormatException {
         try 
         {
             Integer.parseInt(s);
             return true;
-        } 
-        catch (NumberFormatException e) 
-        {
+        } catch (NumberFormatException e) {
             return false;
         }
     }
@@ -21,8 +18,14 @@ public class h_task_41
     {
         for (int i = 0; i < arr.length; i++) 
         {
-            if (isDigit(arr[i])) stack.push(Integer.parseInt(arr[i])); 
-            else sign *= -1; 
+            if (isDigit(arr[i])) 
+            {
+                stack.push(Integer.parseInt(arr[i]));
+            } 
+            else
+            {
+                sign *= -1;               
+            } 
         }
         return sign;
     }
@@ -50,7 +53,7 @@ public class h_task_41
         Deque<Integer> multSt = new ArrayDeque<>();
 //--------------- Считываем слагаемые -------------------------
         System.out.println("\nВведите первое число: ");
-        var firstStr = new Scanner(System.in);
+        Scanner firstStr = new Scanner(System.in);
         String[] first = firstStr.next().split("");
 
         System.out.println("\nВведите второе число: ");
