@@ -1,12 +1,13 @@
 {
     "java.debug.settings.onBuildFailureProceed": true,
     "java.project.sourcePaths": [
+        "H_W/H_w-05",
         "H_W/H_w-04",
         "H_W/H_w-03",
         "H_W/H_w-02",
         "H_W/H_w-01",
         "C_W/C_w-02",
         "C_W/C_w-01",
-        "H_W/H_w-05"
+        "H_W/H_w-06"
     ]
 }
